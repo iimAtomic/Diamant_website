@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { FaFacebook, FaTiktok, FaYoutube } from 'react-icons/fa'
 import { ReactNode } from 'react'
+import React from 'react'
 
 const Logo = (props: any) => {
   return (

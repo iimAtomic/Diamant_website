@@ -12,10 +12,7 @@ import Abonnement2 from '@/components/rechargement'
 import SmallCentered from '@/components/footer'
 
 
-
-
 const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
