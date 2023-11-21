@@ -812,7 +812,7 @@ export default function Abonnement2() {
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
-              7200 D
+              7200 fcfa
             </Text>
           </Stack>
         </Stack>
@@ -889,7 +889,7 @@ export default function Abonnement2() {
           </Heading>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
-              $10000 fcfa
+              10000 fcfa
             </Text>
           </Stack>
         </Stack>
