@@ -10,7 +10,7 @@ import Text2 from '@/components/Titre2'
 import Rechargement from '@/components/rechargement'
 import Abonnement2 from '@/components/rechargement'
 import SmallCentered from '@/components/footer'
-import Banner from '@/components/banner'
+
 
 
 
