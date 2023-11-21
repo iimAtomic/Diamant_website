@@ -20,6 +20,7 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon, AddIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
+import React from 'react';
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -71,7 +72,7 @@ export default function WithAction() {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'start'}>
+          <HStack spacing={8} alignItems={'center'}>
             <Image
               rounded={'lg'}
               height={100}
