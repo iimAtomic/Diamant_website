@@ -1,26 +1,18 @@
 'use client'
-
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
   Image,
-  Text,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
   useColorMode,
-} from '@chakra-ui/react'
-import { HamburgerIcon, CloseIcon, AddIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
-import React from 'react';
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon, AddIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useBreakpointValue } from '@chakra-ui/react';
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
@@ -31,6 +23,7 @@ const handleAcheterClick = () => {
   const whatsappUrl = `https://wa.me/+2250501310360`;
   window.location.href = whatsappUrl;
 };
+
 const NavLink = (props: NavLinkProps) => {
   const { href, children, ...rest } = props;
   return (
@@ -55,15 +48,19 @@ export default function WithAction() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
   const links = [
     { text: 'Abonnement', href: '#abonnement' },
     { text: 'Recharge', href: '#rechargement' },
     { text: 'Contact', href: '#contact' },
   ];
 
+  const showCommanderButton = useBreakpointValue({ base: false, md: true });
+
   return (
     <>
-      <Box id='navbar' bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box id="navbar" bg={useColorModeValue('gray.100', 'gray.900')} px={2} py={2}>
         <Flex h={100} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -72,22 +69,26 @@ export default function WithAction() {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8}  >
-            <Image
-              rounded={'lg'}
-              height={100}
-              width={102}
-              objectFit={'cover'}
-              src={'images/logo.png'}
-              alt="#"
-            />
-            <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
-              {links.map((link) => (
-                <NavLink key={link.text} href={link.href}>
-                  {link.text}
-                </NavLink>
-              ))}
-            </HStack>
+          <HStack spacing={8}>
+            {!isOpen && (
+              <Image
+                rounded={'lg'}
+                height={100}
+                width={102}
+                objectFit={'cover'}
+                src={'images/logo.png'}
+                alt="#"
+              />
+            )}
+            {isMobile ? null : (
+              <HStack as={'nav'} spacing={4}>
+                {links.map((link) => (
+                  <NavLink key={link.text} href={link.href}>
+                    {link.text}
+                  </NavLink>
+                ))}
+              </HStack>
+            )}
           </HStack>
 
           <Flex alignItems={'center'} margin={10}>
@@ -95,21 +96,23 @@ export default function WithAction() {
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
 
-            <Button
-              variant={'solid'}
-              colorScheme={'teal'}
-              margin={8}
-              size={'sm'}
-              mr={4}
-              leftIcon={<AddIcon />}
-              onClick={handleAcheterClick}
-            >
-              Commander
-            </Button>
+            {showCommanderButton && (
+              <Button
+                variant={'solid'}
+                colorScheme={'teal'}
+                margin={8}
+                size={'sm'}
+                mr={4}
+                leftIcon={<AddIcon />}
+                onClick={handleAcheterClick}
+              >
+                Commander
+              </Button>
+            )}
           </Flex>
         </Flex>
 
-        {isOpen ? (
+        {isOpen && isMobile ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
               {links.map((link) => (
