@@ -72,12 +72,11 @@ export default function WithAction() {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={'center'}>
+          <HStack spacing={8}  >
             <Image
               rounded={'lg'}
               height={100}
               width={102}
-              margin={10}
               objectFit={'cover'}
               src={'images/logo.png'}
               alt="#"
@@ -91,7 +90,7 @@ export default function WithAction() {
             </HStack>
           </HStack>
 
-          <Flex alignItems={'center'}>
+          <Flex alignItems={'center'} margin={10}>
             <Button onClick={toggleColorMode}>
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
@@ -105,7 +104,6 @@ export default function WithAction() {
               leftIcon={<AddIcon />}
               onClick={handleAcheterClick}
             >
-              
               Commander
             </Button>
           </Flex>

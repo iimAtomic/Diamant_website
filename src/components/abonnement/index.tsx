@@ -25,7 +25,7 @@ export default function Abonnement() {
   };
   return (
     <Center py={12} id="abonnement">
-     <Flex flexWrap="wrap"   >
+     <Flex flexWrap="wrap"  justifyContent={'center'} >
       <Box
         margin={8}
         role={'group'}
